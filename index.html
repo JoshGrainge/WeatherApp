@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./index.js"></script>
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div id="layout">
+      <header>
+        <div id="toggles-container">
+          <label for="theme">
+            Theme
+            <input type="checkbox" id="theme" />
+          </label>
+          <label for="celcius">
+            C*
+            <input type="checkbox" id="celcius" />
+          </label>
+        </div>
+        <div id="search-container">
+          <label for="search">
+            Search:
+            <input type="text" id="search" placeholder="Enter city" />
+          </label>
+        </div>
+      </header>
+
+      <h1>Sudbury, ON</h1>
+      <div id="current">
+        <h2 class="day-title">Current</h2>
+        <img
+          src="https://weather.gc.ca/weathericons/02.gif"
+          id="current-image"
+        />
+        <h2>-11°C</h2>
+        <p>Cloudy</p>
+      </div>
+
+      <div id="week-forecast">
+        <h2 class="week-forecast-title">7 Day Forecast</h2>
+        <div id="card-container">
+          <div class="card">
+            <h2 class="day-title">Sun</h2>
+            <img src="https://weather.gc.ca/weathericons/02.gif" />
+            <h2>0°C</h2>
+            <p>30%</p>
+            <p>Mix of sun and clouds</p>
+          </div>
+          <div class="card">
+            <h2 class="day-title">Mon</h2>
+            <img src="https://weather.gc.ca/weathericons/02.gif" />
+            <h2>0°C</h2>
+            <p>30%</p>
+            <p>Mix of sun and clouds</p>
+          </div>
+          <div class="card">
+            <h2 class="day-title">Tue</h2>
+            <img src="https://weather.gc.ca/weathericons/02.gif" />
+            <h2>0°C</h2>
+            <p>30%</p>
+
+            <p>Mix of sun and clouds</p>
+          </div>
+          <div class="card">
+            <h2 class="day-title">Wed</h2>
+            <img src="https://weather.gc.ca/weathericons/02.gif" />
+            <h2>0°C</h2>
+            <p>30%</p>
+            <p>Mix of sun and clouds</p>
+          </div>
+          <div class="card">
+            <h2 class="day-title">Thu</h2>
+            <img src="https://weather.gc.ca/weathericons/02.gif" />
+            <h2>0°C</h2>
+            <p>30%</p>
+            <p>Mix of sun and clouds</p>
+          </div>
+          <div class="card">
+            <h2 class="day-title">Fri</h2>
+            <img src="https://weather.gc.ca/weathericons/02.gif" />
+            <h2>0°C</h2>
+            <p>30%</p>
+            <p>Mix of sun and clouds</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
