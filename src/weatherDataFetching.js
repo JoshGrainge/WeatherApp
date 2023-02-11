@@ -18,7 +18,6 @@ async function fetchWeatherData() {
 
     _getForecastData(data);
 
-    console.log("Updating city title to: " + data.name);
     updateCityTitle(data.name);
 
     const dataObject = getWeatherData(data);

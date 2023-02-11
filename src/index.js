@@ -16,7 +16,6 @@ celsiusToggle.addEventListener("change", () => {
 search.addEventListener("search", (e) => {
   e.preventDefault();
 
-  console.log("Searching: " + search.value);
   global.city = search.value;
   search.value = "";
 
