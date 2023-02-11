@@ -46,5 +46,7 @@ function updateCurrentCard(temperature, description, icon) {
 }
 
 function _clearCurrentCard() {
-  currentContainer.innerHTML = "";
+  while (currentContainer.firstChild) {
+    currentContainer.removeChild(currentContainer.firstChild);
+  }
 }
