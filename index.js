@@ -4,7 +4,7 @@ const weatherKey = config.WEATHER_KEY;
 const pexelKey = config.PEXELS_KEY;
 
 let city = "Sudbury";
-city = "London";
+city = "Czechia";
 let weatherRequest = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherKey}`;
 
 let tempSuffix = "°C";
