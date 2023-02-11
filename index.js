@@ -36,6 +36,8 @@ async function getData() {
 
     updateCityTitle(data.name);
 
+    console.log(data);
+
     const dataObject = getWeatherData(data);
     createCurrentCard(dataObject.icon, dataObject.temp, dataObject.description);
   } catch (err) {
@@ -134,8 +136,7 @@ function createForecastCard(title, icon, temp, desc) {
 
 function getWeatherData(data) {
   return {
-    // TODO get weekday name from date
-    title: "Day",
+    title: getWeekDayValue(data.dt_txt),
     temp: `${getActualTemp(data.main.temp)} ${tempSuffix}`,
     description: data.weather[0].description,
     icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
@@ -151,4 +152,10 @@ function getActualTemp(kelvin) {
 
   // Returns only first decimal
   return Math.round(returnNum * 10) / 10;
+}
+
+function getWeekDayValue(date) {
+  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const d = new Date(date);
+  return weekdays[d.getDay()];
 }
