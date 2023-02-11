@@ -26,7 +26,7 @@ async function getData(city) {
 const currentContainer = document.getElementById("current");
 
 function updateCurrentCard(temperature, description, icon) {
-  _clearCurrentCard();
+  _clearCurrentCard(currentContainer);
   const title = document.createElement("h2");
   const weatherIcon = document.createElement("img");
   const temperatureText = document.createElement("h2");
@@ -45,8 +45,8 @@ function updateCurrentCard(temperature, description, icon) {
   currentContainer.appendChild(descriptionPara);
 }
 
-function _clearCurrentCard() {
-  while (currentContainer.firstChild) {
-    currentContainer.removeChild(currentContainer.firstChild);
+function _clearChildren(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
   }
 }
