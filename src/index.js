@@ -1,16 +1,22 @@
 import global from "./globalVariables";
+import { toggleThemes } from "./themes";
 import { fetchWeatherData } from "./weatherDataFetching";
 
 // Inputs
 const search = document.getElementById("search");
-const themeToggle = document.getElementById("theme");
-const celsiusToggle = document.getElementById("celsius");
+const themeToggle = document.getElementById("theme-toggle");
+const celsiusToggle = document.getElementById("degree-toggle");
+
+themeToggle.addEventListener("click", () => {
+  console.log("CLICKING");
+  toggleThemes();
+});
 
 celsiusToggle.addEventListener("change", () => {
   global.isCelsius = !global.isCelsius;
   global.tempSuffix = global.isCelsius ? "°C" : "°F";
 
-  getData();
+  fetchWeatherData();
 });
 
 search.addEventListener("search", (e) => {

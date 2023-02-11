@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="./style.css" />
     <script src="./config.js"></script>
     <script src="./main.js" defer></script>
@@ -13,15 +17,24 @@
     <div id="layout">
       <header>
         <div id="toggles-container">
-          <label for="theme">
-            Theme
-            <input type="checkbox" id="theme" />
-          </label>
-          <label for="celcius">
-            C*
-            <input type="checkbox" id="celsius" checked />
-          </label>
+          <div>
+            <input type="checkbox" class="checkbox" id="theme-toggle" />
+            <label for="theme-toggle" class="label">
+              <i class="fa fa-moon-o"></i>
+              <i class="fa fa-sun-o"></i>
+              <div class="ball"></div>
+            </label>
+          </div>
+          <div>
+            <input type="checkbox" class="checkbox" id="degree-toggle" />
+            <label for="degree-toggle" class="label">
+              <i>°F</i>
+              <i>°C</i>
+              <div class="ball"></div>
+            </label>
+          </div>
         </div>
+
         <div id="search-container">
           <label for="search">
             Search:
