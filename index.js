@@ -136,9 +136,19 @@ function getWeatherData(data) {
   return {
     // TODO get weekday name from date
     title: "Day",
-    // TODO convert from kelvin to celcius or fahrenheit
-    temp: `${data.main.temp} ${tempSuffix}`,
+    temp: `${getActualTemp(data.main.temp)} ${tempSuffix}`,
     description: data.weather[0].description,
     icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
   };
+}
+
+function getActualTemp(kelvin) {
+  const celsius = kelvin - 273.15;
+
+  let returnNum = celsius;
+  // Convert to fahrenheit
+  if (tempSuffix != "°C") returnNum = celsius * (9 / 5) + 32;
+
+  // Returns only first decimal
+  return Math.round(returnNum * 10) / 10;
 }
