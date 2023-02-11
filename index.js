@@ -8,6 +8,7 @@ city = "Czechia";
 let weatherRequest = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherKey}`;
 
 let tempSuffix = "°C";
+
 getData(city);
 
 async function getData(city) {
@@ -23,10 +24,9 @@ async function getData(city) {
   );
 }
 
-const currentContainer = document.getElementById("current");
-
 function updateCurrentCard(temperature, description, icon) {
-  _clearCurrentCard(currentContainer);
+  const currentContainer = document.getElementById("current");
+
   const title = document.createElement("h2");
   const weatherIcon = document.createElement("img");
   const temperatureText = document.createElement("h2");
@@ -39,14 +39,10 @@ function updateCurrentCard(temperature, description, icon) {
 
   title.className = "day-title";
 
-  currentContainer.appendChild(title);
-  currentContainer.appendChild(weatherIcon);
-  currentContainer.appendChild(temperatureText);
-  currentContainer.appendChild(descriptionPara);
-}
-
-function _clearChildren(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
+  currentContainer.replaceChildren(
+    title,
+    weatherIcon,
+    temperatureText,
+    descriptionPara
+  );
 }
