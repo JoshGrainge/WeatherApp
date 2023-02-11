@@ -16,15 +16,10 @@ async function getData(city) {
   const data = await reply.json();
   console.log(data);
 
-  updateCurrentCard(
-    // TODO convert from kelvin to celcius or fahrenheit
-    `${data.main.temp} ${tempSuffix}`,
-    data.weather[0].description,
-    `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-  );
+  updateCurrentCard(getWeatherData(data));
 }
 
-function updateCurrentCard(temperature, description, icon) {
+function updateCurrentCard(dataObject) {
   const currentContainer = document.getElementById("current");
 
   const title = document.createElement("h2");
@@ -33,9 +28,9 @@ function updateCurrentCard(temperature, description, icon) {
   const descriptionPara = document.createElement("p");
 
   title.value = "Current";
-  weatherIcon.src = icon;
-  temperatureText.textContent = temperature;
-  descriptionPara.textContent = description;
+  weatherIcon.src = dataObject.icon;
+  temperatureText.textContent = dataObject.temp;
+  descriptionPara.textContent = dataObject.description;
 
   title.className = "day-title";
 
@@ -45,4 +40,16 @@ function updateCurrentCard(temperature, description, icon) {
     temperatureText,
     descriptionPara
   );
+}
+
+function createWeekForecastCards(dataObject) {}
+
+function getWeatherData(data) {
+  return {
+    title: "title",
+    // TODO convert from kelvin to celcius or fahrenheit
+    temp: `${data.main.temp} ${tempSuffix}`,
+    description: data.weather[0].description,
+    icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+  };
 }
