@@ -5,11 +5,23 @@ const cityTitle = document.getElementById("city-title");
 const currentContainer = document.getElementById("current");
 const fiveDayForecastContainer = document.getElementById("card-container");
 
+// Inputs
+const search = document.getElementById("search");
+const themeToggle = document.getElementById("theme");
+const celsiusToggle = document.getElementById("celsius");
+
 let city = "Sudbury";
 
 let tempSuffix = "°C";
+isCelsius = true;
 
-const search = document.getElementById("search");
+celsiusToggle.addEventListener("change", () => {
+  isCelsius = !isCelsius;
+  tempSuffix = isCelsius ? "°C" : "°F";
+
+  getData();
+});
+
 search.addEventListener("search", (e) => {
   e.preventDefault();
 
@@ -35,8 +47,6 @@ async function getData() {
     getForecastData(data);
 
     updateCityTitle(data.name);
-
-    console.log(data);
 
     const dataObject = getWeatherData(data);
     createCurrentCard(dataObject.icon, dataObject.temp, dataObject.description);
