@@ -16,7 +16,7 @@ function _getActualTemp(kelvin) {
   // Convert to fahrenheit
   if (global.tempSuffix != "°C") returnNum = celsius * (9 / 5) + 32;
 
-  // Returns only first decimal
+  // Returns only to first decimal
   return Math.round(returnNum * 10) / 10;
 }
 
