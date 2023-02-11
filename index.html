@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./index.js"></script>
+    <script src="./config.js"></script>
+    <script src="./index.js" defer></script>
     <title>Weather App</title>
   </head>
   <body>
@@ -30,15 +31,7 @@
       </header>
 
       <h1>Sudbury, ON</h1>
-      <div id="current">
-        <h2 class="day-title">Current</h2>
-        <img
-          src="https://weather.gc.ca/weathericons/02.gif"
-          id="current-image"
-        />
-        <h2>-11°C</h2>
-        <p>Cloudy</p>
-      </div>
+      <div id="current"></div>
 
       <div id="week-forecast">
         <h2 class="week-forecast-title">7 Day Forecast</h2>
