@@ -138,7 +138,7 @@ function getWeatherData(data) {
   return {
     title: getWeekDayValue(data.dt_txt),
     temp: `${getActualTemp(data.main.temp)} ${tempSuffix}`,
-    description: data.weather[0].description,
+    description: uppercaseFirstChar(data.weather[0].description),
     icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
   };
 }
@@ -158,4 +158,8 @@ function getWeekDayValue(date) {
   const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const d = new Date(date);
   return weekdays[d.getDay()];
+}
+
+function uppercaseFirstChar(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
