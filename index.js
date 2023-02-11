@@ -1,36 +1,67 @@
-//import { updateCurrentCard } from "./cards";
-
 const weatherKey = config.WEATHER_KEY;
 const pexelKey = config.PEXELS_KEY;
 
+const cityTitle = document.getElementById("city-title");
 const currentContainer = document.getElementById("current");
 const fiveDayForecastContainer = document.getElementById("card-container");
 
 let city = "Sudbury";
-let weatherRequest = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherKey}`;
 
 let tempSuffix = "°C";
 
-getData(city);
+const search = document.getElementById("search");
+search.addEventListener("search", (e) => {
+  e.preventDefault();
 
-async function getData(city) {
-  const reply = await fetch(weatherRequest, { mode: "cors" });
-  const data = await reply.json();
+  console.log("Searching: " + search.value);
+  city = search.value;
+  search.textContent = "";
 
-  getForecastData(data);
+  getData();
+});
 
-  const dataObject = getWeatherData(data);
-  createCurrentCard(dataObject.icon, dataObject.temp, dataObject.description);
+getData();
+
+async function getData() {
+  try {
+    let weatherRequest = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherKey}`;
+
+    const reply = await fetch(weatherRequest, { mode: "cors" });
+    if (reply.status !== 200)
+      throw new Error(`Could not find valid city of name: ${city}`);
+
+    const data = await reply.json();
+
+    getForecastData(data);
+
+    updateCityTitle(data.name);
+
+    const dataObject = getWeatherData(data);
+    createCurrentCard(dataObject.icon, dataObject.temp, dataObject.description);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function updateCityTitle(city) {
+  cityTitle.textContent = city;
 }
 
 async function getForecastData(data) {
-  const lat = data.coord.lat;
-  const lon = data.coord.lon;
-  const forecastRequest = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherKey}`;
+  try {
+    const lat = data.coord.lat;
+    const lon = data.coord.lon;
+    const forecastRequest = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherKey}`;
 
-  const reply = await fetch(forecastRequest, { mode: "cors" });
-  const forecastData = await reply.json();
-  createFiveDayForecastCards(forecastData.list);
+    const reply = await fetch(forecastRequest, { mode: "cors" });
+    if (reply.status != 200)
+      throw new Error(`Forecast data was not retrieved properly`);
+
+    const forecastData = await reply.json();
+    createFiveDayForecastCards(forecastData.list);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 function createFiveDayForecastCards(forecastData) {
