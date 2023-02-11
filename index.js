@@ -15,7 +15,7 @@ search.addEventListener("search", (e) => {
 
   console.log("Searching: " + search.value);
   city = search.value;
-  search.textContent = "";
+  search.value = "";
 
   getData();
 });
